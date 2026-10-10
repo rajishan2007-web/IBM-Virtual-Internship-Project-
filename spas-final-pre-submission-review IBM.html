@@ -1,0 +1,206 @@
+
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>SPAS — Final Pre-Submission Review</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, "Segoe UI", system-ui, sans-serif;
+    font-size: 14px;
+    line-height: 1.65;
+    background: #ffffff;
+    color: #1f2328;
+    padding: 36px 16px 60px;
+  }
+  .page { max-width: 760px; margin: 0 auto; }
+
+  /* Header */
+  .header {
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    background: #f7f8fa;
+    padding: 28px 28px 22px;
+    margin-bottom: 32px;
+  }
+  .header h1 { font-size: 19px; font-weight: 700; margin-bottom: 4px; }
+  .header p  { color: #57606a; font-size: 13px; margin-bottom: 16px; }
+  .scorecard { display: flex; gap: 10px; flex-wrap: wrap; }
+  .sc { flex: 1 1 100px; border: 1px solid #e5e7eb; border-radius: 6px; padding: 10px 14px; text-align: center; background: #fff; }
+  .sc .n  { font-size: 26px; font-weight: 700; line-height: 1.1; }
+  .sc .lbl{ font-size: 11px; color: #57606a; margin-top: 2px; }
+  .c-red  { color: #cf222e; } .c-ora  { color: #bc4c00; }
+  .c-yel  { color: #9a6700; } .c-grn  { color: #1a7f37; }
+
+  /* Sections */
+  h2.sec {
+    font-size: 12px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: .07em; color: #57606a;
+    border-bottom: 1px solid #e5e7eb;
+    padding-bottom: 6px; margin: 28px 0 14px;
+  }
+
+  /* Finding cards */
+  .finding {
+    border: 1px solid #e5e7eb; border-radius: 6px;
+    margin-bottom: 12px; overflow: hidden;
+  }
+  .fh {
+    display: flex; align-items: baseline; gap: 10px;
+    padding: 9px 14px; background: #f7f8fa;
+    border-bottom: 1px solid #e5e7eb;
+  }
+  .badge {
+    display: inline-block; font-size: 10px; font-weight: 700;
+    padding: 2px 8px; border-radius: 10px;
+    text-transform: uppercase; letter-spacing: .05em; white-space: nowrap;
+  }
+  .b-crit { background:#ffebe9; color:#cf222e; border:1px solid #ffc1c0; }
+  .b-med  { background:#fff8c5; color:#9a6700; border:1px solid #f0e4a0; }
+  .b-low  { background:#dafbe1; color:#1a7f37; border:1px solid #aceebb; }
+  .b-info { background:#ddf4ff; color:#0550ae; border:1px solid #b6e3ff; }
+  .ftitle { font-weight: 600; font-size: 13px; }
+  .fb { padding: 11px 14px; font-size: 13px; }
+  .fb p  { margin-bottom: 6px; }
+  .fb p:last-child { margin-bottom: 0; }
+  code {
+    font-family: "SFMono-Regular", Consolas, monospace;
+    font-size: 12px; background: #f0f2f4;
+    padding: 1px 5px; border-radius: 4px; border: 1px solid #e5e7eb;
+  }
+  .fix {
+    margin-top: 8px; padding: 9px 12px;
+    background: #f0f6ff; border: 1px solid #c5d8f8; border-radius: 5px;
+    font-size: 12px;
+  }
+  .fix strong { display: block; color: #3b82d4; text-transform: uppercase;
+    font-size: 10px; letter-spacing: .06em; margin-bottom: 4px; }
+
+  /* Clear table */
+  .clear-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-bottom: 10px; }
+  .clear-table th { background: #f7f8fa; font-weight: 600; padding: 7px 10px; border: 1px solid #e5e7eb; font-size: 11px; color: #57606a; text-transform: uppercase; }
+  .clear-table td { padding: 7px 10px; border: 1px solid #e5e7eb; vertical-align: top; }
+  .clear-table tr:nth-child(even) td { background: #fafafa; }
+  .ok { color: #1a7f37; font-weight: 600; }
+
+  footer { margin-top: 48px; padding-top: 14px; border-top: 1px solid #e5e7eb;
+    text-align: center; font-size: 12px; color: #57606a; }
+</style>
+</head>
+<body>
+<div class="page">
+
+
+<div class="header">
+  <h1>SPAS — Final Pre-Submission Review</h1>
+  <p>Every source file was read before this report was written. Tests: <strong>13 / 13 passing</strong>.</p>
+  <div class="scorecard">
+    <div class="sc"><div class="n c-red">1</div><div class="lbl">Must Fix</div></div>
+    <div class="sc"><div class="n c-ora">3</div><div class="lbl">Should Fix</div></div>
+    <div class="sc"><div class="n c-yel">3</div><div class="lbl">Minor</div></div>
+    <div class="sc"><div class="n c-grn">0</div><div class="lbl">Blocking</div></div>
+    <div class="sc"><div class="n" style="color:#1f2328">7</div><div class="lbl">Total Issues</div></div>
+  </div>
+</div>
+
+
+<h2 class="sec">Must Fix — 1 issue</h2>
+
+<div class="finding">
+  <div class="fh"><span class="badge b-crit">Must Fix</span><span class="ftitle">F1 · Plaintext demo passwords exposed in login.html</span></div>
+  <div class="fb">
+    <p><code>login.html:43–47</code> renders <code>faculty123</code> and <code>student123</code> in plain text inside a "Demo Login Credentials" box that is visible to every visitor — logged in or not. This ships the same credentials that were removed from <code>seed.py</code> stdout back into the production UI.</p>
+    <p>Any student who views page source can read the faculty password. The box was added for evaluator convenience but it belongs in the <code>README.md</code> only, not in a rendered page.</p>
+    <div class="fix"><strong>Recommended fix</strong>Remove the entire credentials hint block from <code>login.html</code> (lines 38–49). Credentials are already documented in <code>README.md</code>.</div>
+  </div>
+</div>
+
+
+<h2 class="sec">Should Fix — 3 issues</h2>
+
+<div class="finding">
+  <div class="fh"><span class="badge b-med">Should Fix</span><span class="ftitle">F2 · HTML/server mismatch on attendance total_classes minimum</span></div>
+  <div class="fb">
+    <p>The attendance form in <code>attendance.html:44</code> sets <code>min="1"</code> on the Total Classes input, preventing a value of 0 in the browser. However, the server-side validation in <code>faculty.py:315</code> accepts <code>total_cls &lt; 0</code> as the failure condition — meaning <code>total_cls = 0</code> passes server validation.</p>
+    <p>If the browser constraint is bypassed (e.g. via curl or DevTools), a faculty member can save 0 total classes, which writes <code>percentage = 0.0</code> to the database and makes the student appear to have 0% attendance rather than "no data". This is misleading and can incorrectly trigger the "Needs Attention" classification.</p>
+    <div class="fix"><strong>Recommended fix</strong>Change the server check in <code>faculty.py</code> from <code>total_cls &lt; 0</code> to <code>total_cls &lt;= 0</code>, making it consistent with the <code>min="1"</code> HTML constraint.</div>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="fh"><span class="badge b-med">Should Fix</span><span class="ftitle">F3 · Faculty dashboard "Good Performance" card is arithmetically wrong</span></div>
+  <div class="fb">
+    <p><code>faculty_dashboard.html:117</code> shows a "Good Performance" count as <code>{{ total_students - needs_attention_count }}</code>. This subtracts only the "Needs Attention" students from the total, so it incorrectly includes "Average Performance" students in the green "Good" card. For example, with 2 Good, 2 Average, and 1 Needs Attention out of 5 students, the card would display 4 instead of 2.</p>
+    <p>The analytics route already passes the correct <code>good_count</code> to <code>analytics.html</code>, but the faculty dashboard computes it incorrectly in the template itself.</p>
+    <div class="fix"><strong>Recommended fix</strong>Pass a <code>good_count</code> variable from <code>faculty.py/dashboard()</code> to the template (it is already computed in the loop: count students where status == 'Good Performance'), then replace the template expression with <code>{{ good_count }}</code>.</div>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="fh"><span class="badge b-med">Should Fix</span><span class="ftitle">F4 · Unused imports in two route files</span></div>
+  <div class="fb">
+    <p><strong><code>faculty.py:6</code></strong> imports <code>Faculty</code> from <code>app.models</code>. Searching the entire file confirms it is never referenced outside the import line. Faculty is accessed via <code>session['faculty_id']</code> only.</p>
+    <p><strong><code>student.py:2</code></strong> imports <code>redirect</code>, <code>url_for</code>, and <code>flash</code> from Flask. None of them are called anywhere in the file — the student dashboard only reads data and renders a template.</p>
+    <div class="fix"><strong>Recommended fix</strong>Remove <code>Faculty</code> from the <code>faculty.py</code> import. Remove <code>redirect</code>, <code>url_for</code>, and <code>flash</code> from the <code>student.py</code> import.</div>
+  </div>
+</div>
+
+
+<h2 class="sec">Minor — 3 issues</h2>
+
+<div class="finding">
+  <div class="fh"><span class="badge b-low">Minor</span><span class="ftitle">F5 · SESSION_COOKIE_SECURE blocks login over plain HTTP in development</span></div>
+  <div class="fb">
+    <p><code>config.py:17</code> sets <code>SESSION_COOKIE_SECURE = True</code>. This is the correct production setting, but it means the browser will not send the session cookie over plain HTTP. As a result, a developer who runs <code>python run.py</code> locally (plain HTTP) and logs in will be redirected to the login page on every protected route, appearing as though authentication is broken.</p>
+    <p>The <code>README.md</code> mentions this, but the code has no development configuration class to override it — the only escape is editing <code>config.py</code> directly, which risks accidentally committing the change.</p>
+    <div class="fix"><strong>Recommended fix</strong>Add a <code>DevConfig(Config)</code> class that overrides <code>SESSION_COOKIE_SECURE = False</code>, and load it when <code>FLASK_ENV=development</code> or <code>FLASK_DEBUG=true</code> is set. No change to the production <code>Config</code> is needed.</div>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="fh"><span class="badge b-low">Minor</span><span class="ftitle">F6 · Chart.js loaded on every page, even those with no charts</span></div>
+  <div class="fb">
+    <p><code>base.html:113</code> loads Chart.js from CDN unconditionally on every page — including the login page, student management, subject management, marks, and attendance pages, none of which render a <code>&lt;canvas&gt;</code> element. This is an unnecessary network request (~200 KB minified) on five of the nine templates.</p>
+    <p>In addition, <code>dashboard.js</code> is also loaded on every page via <code>base.html:115</code>. The two functions it defines (<code>renderStudentCharts</code>, <code>renderAnalyticsCharts</code>) are only called from the student dashboard and analytics templates.</p>
+    <div class="fix"><strong>Recommended fix</strong>Move the Chart.js and <code>dashboard.js</code> script tags from <code>base.html</code> into the <code>{% block scripts %}</code> of the two templates that actually need them (<code>student_dashboard.html</code> and <code>analytics.html</code>).</div>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="fh"><span class="badge b-low">Minor</span><span class="ftitle">F7 · No empty-state message on faculty dashboard when no students exist</span></div>
+  <div class="fb">
+    <p>The faculty dashboard renders normally when there are no students — it shows all-zero stat cards and the "Quick Actions" and "Performance Classification Rules" sections, which is fine. However, the "Good Performance" card (F3 above) would show <code>0 - 0 = 0</code>, and the Needs Attention sections simply do not appear (correctly guarded by <code>{% if attention_students %}</code>).</p>
+    <p>More practically: if the database is freshly created and the faculty visits their dashboard before adding any students, there is no prompt to add a student — just empty zeros. A brief "No students enrolled yet" hint at the top of the dashboard would improve the first-run experience.</p>
+    <div class="fix"><strong>Recommended fix</strong>Add a conditional block at the top of the dashboard content: <code>{% if total_students == 0 %}&lt;div class="alert alert-info"&gt;No students enrolled yet. &lt;a href="..."&gt;Add your first student&lt;/a&gt; to get started.&lt;/div&gt;{% endif %}</code>.</div>
+  </div>
+</div>
+
+
+<h2 class="sec">Verified Clean — no issues found</h2>
+
+<table class="clear-table">
+  <tr><th>Area</th><th>Result</th><th>Evidence</th></tr>
+  <tr><td>Broken routes</td><td class="ok">✓ None</td><td>All 8 routes have matching blueprint registrations, correct URL prefixes, and guarded by the right decorators</td></tr>
+  <tr><td>Missing templates</td><td class="ok">✓ None</td><td>All 13 templates referenced by <code>render_template()</code> exist on disk, including all 4 error pages</td></tr>
+  <tr><td>CSRF tokens</td><td class="ok">✓ Present</td><td>All 5 POST forms carry a hidden <code>csrf_token</code> input; <code>CSRFProtect</code> is initialised in the app factory</td></tr>
+  <tr><td>Marks calculation</td><td class="ok">✓ Correct</td><td><code>total = internal + assignment + final</code>; max 20+20+60=100; percentage = round(total, 2); validated by test</td></tr>
+  <tr><td>Attendance calculation</td><td class="ok">✓ Correct</td><td><code>pct = (attended / total) × 100</code>; zero-class guard present; validated by test</td></tr>
+  <tr><td>Performance classification</td><td class="ok">✓ Correct</td><td>75% / 70% / 50% thresholds; all 7 boundary cases covered by test</td></tr>
+  <tr><td>Role-based access</td><td class="ok">✓ Enforced</td><td><code>@faculty_required</code> on all 6 faculty+analytics routes; <code>@student_required</code> on student dashboard; both check <code>user_id</code> and <code>role</code></td></tr>
+  <tr><td>Student identity isolation</td><td class="ok">✓ Safe</td><td>Dashboard resolves student via <code>filter_by(user_id=session['user_id'])</code> — not from URL param or session-stored DB id</td></tr>
+  <tr><td>DB transaction atomicity</td><td class="ok">✓ Correct</td><td>Student creation, subject creation, marks update, attendance update each use a single <code>try/except SQLAlchemyError</code> with rollback</td></tr>
+  <tr><td>Password storage</td><td class="ok">✓ Hashed</td><td>PBKDF2-SHA256 via Werkzeug <code>generate_password_hash</code> / <code>check_password_hash</code></td></tr>
+  <tr><td>Input validation</td><td class="ok">✓ Present</td><td>Server-side: lengths, email regex, mark ranges 0–20/0–60, attendance logical checks</td></tr>
+  <tr><td>Global error handlers</td><td class="ok">✓ Present</td><td>403, 404, 429, 500 — all registered in <code>create_app()</code>; 500 calls <code>db.session.rollback()</code></td></tr>
+  <tr><td>XSS</td><td class="ok">✓ Mitigated</td><td>Jinja2 auto-escaping active by default for all .html templates</td></tr>
+  <tr><td>SQL injection</td><td class="ok">✓ Not present</td><td>All DB access via SQLAlchemy ORM; no raw SQL string concatenation anywhere</td></tr>
+  <tr><td>Rate limiting</td><td class="ok">✓ Active</td><td>10 req/min on <code>/login</code> via Flask-Limiter; 429 template rendered on breach</td></tr>
+  <tr><td>Chart JS wiring</td><td class="ok">✓ Correct</td><td><code>renderStudentCharts()</code> and <code>renderAnalyticsCharts()</code> are called from the correct templates with correct JSON-serialised data</td></tr>
+  <tr><td>CSS custom classes</td><td class="ok">✓ Defined</td><td><code>.badge-good</code>, <code>.badge-average</code>, <code>.badge-attention</code>, <code>.navbar-custom</code>, <code>.card-stat</code>, <code>.stat-icon</code>, <code>.page-title</code> all defined in <code>style.css</code></td></tr>
+  <tr><td>All tests</td><td class="ok">✓ 13 / 13 pass</td><td>Run immediately before this report; no new warnings beyond the expected Flask-Limiter in-memory advisory</td></tr>
+</table>
+
+</div>
+<footer>Made with IBM Bob</footer>
+</body>
+</html>

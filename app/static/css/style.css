@@ -1,0 +1,100 @@
+/* Student Performance & Attendance Analytics System Custom CSS */
+
+body {
+    background-color: #f8fafc;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Primary Navbar Styling */
+.navbar-custom {
+    background-color: #1e40af; /* Deep Academic Blue */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.navbar-custom .navbar-brand {
+    color: #ffffff;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.navbar-custom .nav-link {
+    color: #e2e8f0;
+    font-weight: 500;
+    margin-right: 5px;
+}
+
+.navbar-custom .nav-link:hover, 
+.navbar-custom .nav-link.active {
+    color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 5px;
+}
+
+/* Page Headers */
+.page-title {
+    color: #1e3a8a;
+    font-weight: 600;
+    border-bottom: 2px solid #cbd5e1;
+    padding-bottom: 8px;
+    margin-bottom: 20px;
+}
+
+/* Dashboard Summary Cards */
+.card-stat {
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    transition: transform 0.2s ease-in-out;
+}
+
+.card-stat:hover {
+    transform: translateY(-2px);
+}
+
+.stat-icon {
+    font-size: 2.2rem;
+    opacity: 0.8;
+}
+
+/* Table Design */
+.table-custom {
+    background-color: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+}
+
+.table-custom th {
+    background-color: #f1f5f9;
+    color: #334155;
+    font-weight: 600;
+}
+
+/* Custom Status Badges */
+.badge-good {
+    background-color: #16a34a;
+    color: #ffffff;
+}
+
+.badge-average {
+    background-color: #ca8a04;
+    color: #ffffff;
+}
+
+.badge-attention {
+    background-color: #dc2626;
+    color: #ffffff;
+}
+
+/* Footer */
+footer {
+    margin-top: auto;
+    background-color: #0f172a;
+    color: #94a3b8;
+    padding: 15px 0;
+    text-align: center;
+    font-size: 0.9rem;
+}
